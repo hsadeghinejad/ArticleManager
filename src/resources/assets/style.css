@@ -1,0 +1,12 @@
+ul.multiselect-container{
+    right: 0 !important;
+    left: auto !important;
+}
+
+ul.multiselect-container li{
+    text-align: right;
+}
+
+.dropdown-menu{
+    min-width: 12rem !important;
+}
