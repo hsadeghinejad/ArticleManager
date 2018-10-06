@@ -1,7 +1,6 @@
 {
     "name": "hamed-sadeghi/article-manager",
     "description": "This package manager your articles with help of admin panel package",
-    "type": "project",
     "authors": [
         {
             "name": "hamed",
