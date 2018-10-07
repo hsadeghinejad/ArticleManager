@@ -28,10 +28,10 @@ class CreateCategoriesTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->integer('article_id')->unsigned();
-            $table->foreign('article_id')->refrences('id')->on('articles')->onDeleted('restricted');
+            $table->foreign('article_id')->references('id')->on('articles')->onDeleted('restrict');
 
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->refrences('id')->on('categories')->onDeleted('restricted');
+            $table->foreign('category_id')->references('id')->on('categories')->onDeleted('restrict');
 
             $table->primary(['article_id', 'category_id']);
         });

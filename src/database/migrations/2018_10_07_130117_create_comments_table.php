@@ -19,10 +19,10 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
 
             $table->integer('article_id')->unsigned();
-            $table->foreign('article_id')->refrences('id')->on('articles')->onDeleted('restricted');
+            $table->foreign('article_id')->references('id')->on('articles')->onDeleted('restrict');
 
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->refrences('id')->on('users')->onDeleted('restricted');
+            $table->foreign('user_id')->references('id')->on('users')->onDeleted('restrict');
             
             $table->text('body');
 
