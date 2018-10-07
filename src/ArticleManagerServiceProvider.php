@@ -1,6 +1,7 @@
 <?php
 namespace HamedSadeghi\ArticleManager;
 
+use HamedSadeghi\AdminPanel\AdminPanel;
 use HamedSadeghi\ArticleManager\Models\Article;
 use HamedSadeghi\ArticleManager\Models\Category;
 use Illuminate\Foundation\AliasLoader;
@@ -15,6 +16,9 @@ class ArticleManagerServiceProvider extends ServiceProvider
         $this->app->bind('ArticleManager', function(){
             return new ArticleManager();
         });
+
+        $this->app->register(\HamedSadeghi\AdminPanel\AdminPanelServiceProvider::class);
+        AliasLoader::getInstance()->alias('AdminPanel', AdminPanel::class);
 
         AliasLoader::getInstance()->alias('ArticleManager', ArticleManagerFacade::class);
 
@@ -50,7 +54,7 @@ class ArticleManagerServiceProvider extends ServiceProvider
             return "<?php echo (new Verta($time))->formatDifference(verta()) ?>";
         });
 
-        //        View::composer('layouts.blocks.links', function($view){
+//        View::composer('layouts.blocks.links', function($view){
 //           $categories = Category::all();
 //
 //           $view->with('categories', $categories);
