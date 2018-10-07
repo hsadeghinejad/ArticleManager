@@ -51,7 +51,8 @@ class ArticleController extends Controller
             $article->update(\request(['title', 'body']));
             $article->categories()->sync(\request('categories'));
         }else{
-            $article = Auth::user()->article()->create([
+            $article = Article::create([
+                'user_id' => Auth::user()->id,
                 'title' => \request('title'),
                 'body' => \request('body'),
             ]);

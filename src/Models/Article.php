@@ -1,10 +1,13 @@
 <?php
 namespace HamedSadeghi\ArticleManager\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use Sluggable;
+
     protected $fillable = [
         'user_id',
         'title',
@@ -14,13 +17,13 @@ class Article extends Model
         'commentCount'
     ];
 
-//    public function sluggable(){
-//        return [
-//            'slug' => [
-//                'source' => 'slug'
-//            ]
-//        ];
-//    }
+    public function sluggable(){
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function getRouteKeyName()
     {

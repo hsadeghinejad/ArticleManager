@@ -24,8 +24,8 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('body');
-            $table->tinyInteger('viewCount')->unsigned();
-            $table->tinyInteger('commentCount')->unsigned();
+            $table->tinyInteger('viewCount')->unsigned()->default(0);
+            $table->tinyInteger('commentCount')->unsigned()->default(0);
 
             $table->timestamps();
         });
