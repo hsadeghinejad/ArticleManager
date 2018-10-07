@@ -28,6 +28,8 @@ class ArticleManagerServiceProvider extends ServiceProvider
     public function boot(){
         require (__DIR__ . '/routes/web.php');
 
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
         Route::bind('article_id', function($article_id){
             return Article::find($article_id);
         });
