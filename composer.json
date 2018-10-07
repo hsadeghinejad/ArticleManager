@@ -7,6 +7,11 @@
             "email": "h.sadeghynejad@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "HamedSadeghi\\ArticleManager\\" : "src/"
+        }
+    },
     "require": {
         "illuminate/support": "~5.0",
         "hamed-sadeghinejad/admin-panel": "~0.1"
