@@ -15,7 +15,8 @@
     "require": {
         "illuminate/support": "~5.0",
         "hamed-sadeghinejad/admin-panel": "~0.1",
-        "cviebrock/eloquent-sluggable": "~4.6.0"
+        "cviebrock/eloquent-sluggable": "~4.6.0",
+        "hekmatinasser/verta": "1.9.*"
     },
     "extra": {
         "laravel": {
