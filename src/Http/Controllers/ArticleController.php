@@ -6,9 +6,12 @@ use HamedSadeghi\ArticleManager\Http\Requests\ArticleRequest;
 use HamedSadeghi\ArticleManager\Models\Article;
 use HamedSadeghi\ArticleManager\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
+    const ARTICLE_IMAGES_PATH = 'articles';
+
     public function blog(){
         return view('articlemanager::blog');
     }
@@ -48,6 +51,15 @@ class ArticleController extends Controller
 //        }
 
         if ($article->id){
+            if ($request->hasFile('image')){
+                if (!is_null($article->image))
+                    Storage::delete($article->image);
+
+                $image = $request->file('image')->store(ArticleController::ARTICLE_IMAGES_PATH);
+                $article->image = $image;
+                $article->save();
+            }
+
             $article->update(\request(['title', 'body']));
             $article->categories()->sync(\request('categories'));
         }else{
@@ -56,6 +68,13 @@ class ArticleController extends Controller
                 'title' => \request('title'),
                 'body' => \request('body'),
             ]);
+
+            if ($request->hasFile('image')){
+                $image = request()->file('image')->store(ArticleController::ARTICLE_IMAGES_PATH);
+                $article->image = $image;
+                $article->save();
+            }
+
             $article->categories()->attach(\request('categories'));
         }
 
@@ -69,6 +88,12 @@ class ArticleController extends Controller
         session()->flash('message', 'مقاله شما با موفقیت ثبت شد');
 
         return redirect()->route('admin.articles');
+    }
+
+    public function image(Article $article){
+        header('Content-type: image/jpeg');
+        header('Content-length', Storage::size($article->image));
+        return readfile(storage_path('app/' . $article->image));
     }
 
     public function delete(Article $article){

@@ -18,6 +18,7 @@ Route::group([
 ], function(){
     Route::name('articles')->get('/articles', 'ArticleController@blog');
     Route::name('article.view')->get('/article/{article}', 'ArticleController@view');
+    Route::name('article.image')->get('/articles/images/{article}.jpg', 'ArticleController@image');
 
     Route::name('comment.store')->post('/article/{article}/comments/store', 'CommentController@store')->middleware('auth');
 

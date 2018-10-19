@@ -32,7 +32,12 @@
             </div>
             <div class="article-body">
                 <hr>
-                <img class="img-fluid my-2 rounded" src="holder.js/900x300" alt="Post image">
+                <img
+                    class="img-fluid my-2 rounded"
+                    src="{{ is_null($article->image) ?
+                                'holder.js/900x300' :
+                                route('article.image', ['article' => $article->slug]) }}"
+                    alt="Post image">
                 <hr>
                 <p>{!! $article->body !!}</p>
                 <div class="d-flex justify-content-between align-items-end">

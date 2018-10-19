@@ -25,7 +25,7 @@
             $route_name = 'admin.article.update';
         }
     @endphp
-    <form action="{{route($route_name, $params)}}" method="POST">
+    <form action="{{route($route_name, $params)}}" method="POST" enctype="multipart/form-data">
         {!! csrf_field() !!}
         @if($article->id)
             {{ method_field('PATCH') }}
@@ -47,6 +47,11 @@
                     </option>
                 @endforeach
             </select>
+        </div>
+
+        <div class="form-group">
+            <label>تصویر: </label>
+            <input class="form-control" name="image" type="file">
         </div>
 
         <div class="form-group">
