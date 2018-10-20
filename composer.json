@@ -1,6 +1,7 @@
 {
     "name": "hamed-sadeghinejad/article-manager",
     "description": "This package manager your articles with help of admin panel package",
+	"license": "MIT",
     "authors": [
         {
             "name": "hamed",
