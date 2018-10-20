@@ -1,4 +1,8 @@
 # Article manager
+[![Latest Stable Version](https://poser.pugx.org/hamed-sadeghinejad/article-manager/v/stable)](https://packagist.org/packages/hamed-sadeghinejad/article-manager)
+[![Total Downloads](https://poser.pugx.org/hamed-sadeghinejad/article-manager/downloads)](https://packagist.org/packages/hamed-sadeghinejad/article-manager)
+[![Latest Unstable Version](https://poser.pugx.org/hamed-sadeghinejad/article-manager/v/unstable)](https://packagist.org/packages/hamed-sadeghinejad/article-manager)
+[![License](https://poser.pugx.org/hamed-sadeghinejad/article-manager/license)](https://packagist.org/packages/hamed-sadeghinejad/article-manager)
 This package use [hsadeghinejad/AdminPanel](https://github.com/hsadeghinejad/AdminPanel) to create a article management and blog view for laravel projects
 
 # Installation
