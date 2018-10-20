@@ -1,12 +1,12 @@
 @extends('adminpanel::layout')
 
 @section('title')
-    ثبت مقاله
+    {{ __('articlemanager::messages.Article form') }}
 @endsection
 
 @section('block-title')
     <i class="fas fa-file-alt ml-2"></i>
-    ثبت مقاله
+    {{ __('articlemanager::messages.Article form') }}
 @endsection
 
 @section('adminpanel_styles')
@@ -32,13 +32,15 @@
         @endif
 
         <div class="form-group">
-            <label for="title">عنوان مقاله</label>
-            <input type="text" class="form-control" name="title" value="{{ old('title', $article->title) }}" placeholder="عنوان مقاله ...">
-            <small class="form-text text-muted">لطفا عنوان مقاله را وارد نمایید</small>
+            <label for="title">{{ __('articlemanager::messages.Article title') }}</label>
+            <input type="text" class="form-control"
+                   name="title" value="{{ old('title', $article->title) }}"
+                   placeholder="{{ __('articlemanager::messages.Article title') }} ...">
+            <small class="form-text text-muted">{{ __('articlemanager::messages.Please enter article title') }}</small>
         </div>
 
         <div class="form-group">
-            <label>دسته بندی: </label>
+            <label>{{ __('articlemanager::messages.Article categories') }}: </label>
             <select name="categories[]" class="multiselect" multiple>
                 @foreach($categories as $id=>$category)
                     <option value="{{ $id }}"
@@ -50,17 +52,19 @@
         </div>
 
         <div class="form-group">
-            <label>تصویر: </label>
+            <label>{{ __('articlemanager::messages.Main image') }}: </label>
             <input class="form-control" name="image" type="file">
         </div>
 
         <div class="form-group">
-            <label for="body">متن مقاله</label>
-            <textarea type="text" class="form-control" name="body" placeholder="متن مقاله ..." rows="7">{{ old('body', $article->body) }}</textarea>
+            <label for="body">{{ __('articlemanager::messages.Article content') }}</label>
+            <textarea type="text" class="form-control" name="body"
+                      placeholder="{{ __('articlemanager::messages.Article content') }} ..."
+                      rows="7">{{ old('body', $article->body) }}</textarea>
         </div>
         <div class="text-left">
-            <button type="submit" class="btn btn-primary">ثبت مقاله</button>
-            <a class="btn btn-secondary" href="{{route('admin.articles')}}">انصراف</a>
+            <button type="submit" class="btn btn-primary">{{ __('articlemanager::messages.Send article') }}</button>
+            <a class="btn btn-secondary" href="{{route('admin.articles')}}">{{ __('articlemanager::messages.Cancel') }}</a>
         </div>
     </form>
 @endsection
@@ -72,10 +76,10 @@
         $('select.multiselect').multiselect({
             buttonText: function(options, select) {
                 if(options.length === 0) {
-                    return 'بدون انتخاب';
+                    return '{{ __('articlemanager::messages.None selected') }}';
                 }
                 else if (options.length > 3) {
-                    return 'بیش از 3 آیتم انتخاب شد';
+                    return '{{ __('articlemanager::messages.More than 3 items selected') }}';
                 }
                 else {
                     var labels = [];

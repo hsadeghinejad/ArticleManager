@@ -1,12 +1,12 @@
 @extends('layout')
 
 @section('title')
-    مقالات
+    {{ __('articlemanager::messages.Articles') }}
 @endsection
 
 @section('content')
     <div class="d-flex align-items-center">
-        <h3 class="mt-5">مقالات سایت</h3>
+        <h3 class="mt-5">{{ __('articlemanager::messages.Articles') }}</h3>
         @if(isset($category))
             <h5 class="mt-5 mr-3 text-info">{{ $category->title }}</h5>
         @endif
@@ -21,11 +21,11 @@
                     </a>
                 </h4>
                 <div class="text-muted mb-2">
-                    ارسال شده توسط {{$article->user->name}}
+                    {{ __('articlemanager::messages.Send by') }} {{$article->user->name}}
                 </div>
                 <small class="text-muted">
                     <i class="far fa-clock"></i>
-                    ارسال شده در تاریخ
+                    {{ __('articlemanager::messages.Send at') }}
                     @date($article->created_at)
                     (@date_ago($article->created_at))
                 </small>
@@ -51,7 +51,7 @@
                     </div>
                     <a href="{{ route('article.view', ['article' => $article->slug]) }}" class="btn btn-info">
                         <div class="d-flex align-items-center">
-                            ادامه مطلب
+                            {{ __('articlemanager::messages.More') }}
                             <i class="far fa-arrow-alt-circle-left mr-1"></i>
                         </div>
                     </a>

@@ -1,23 +1,25 @@
 @extends('adminpanel::layout')
 
 @section('title')
-مدیریت مقالات
+{{ __('articlemanager::messages.Articles management') }}
 @endsection
 
 @section('block-title')
     <i class="fas fa-newspaper ml-2"></i>
-    مدیریت مقالات
+    {{ __('articlemanager::messages.Articles management') }}
 @endsection
 
 @section('body')
-    <a href="{{ route('admin.article.form') }}" class="btn btn-primary mb-3 float-left">افزودن مقاله جدید</a>
+    <a href="{{ route('admin.article.form') }}" class="btn btn-primary mb-3 float-left">
+        {{ __('articlemanager::messages.Add new article') }}
+    </a>
     <table class="table table-striped table-hover">
         <tr class="thead-dark">
             <th>#</th>
-            <th>عنوان</th>
-            <th>نویسنده</th>
-            <th>آخرین بروزرسانی</th>
-            <th>دسته بندی [ها]</th>
+            <th>{{ __('articlemanager::messages.Title') }}</th>
+            <th>{{ __('articlemanager::messages.Writer') }}</th>
+            <th>{{ __('articlemanager::messages.Last updated') }}</th>
+            <th>{{ __('articlemanager::messages.Categories') }}</th>
             <th></th>
         </tr>
 
@@ -35,12 +37,12 @@
             </td>
             <td>
                 <a href="{{ route('admin.article.form', ['article' => $article->id]) }}" class="btn btn-sm btn-warning">
-                    ویرایش
+                    {{ __('articlemanager::messages.Edit') }}
                 </a>
                 <a href="{{ route('admin.article.delete', ['article_id' => $article->id]) }}"
                    onclick="return confirm_delete()"
                    class="btn btn-sm btn-danger">
-                    حذف
+                    {{ __('articlemanager::messages.Delete') }}
                 </a>
             </td>
         </tr>
@@ -52,7 +54,7 @@
 @section('adminpanel_scripts')
 <script>
     function confirm_delete() {
-        if (confirm('آیا مایل به حذف این رکورد هستید؟')) return true;
+        if (confirm('{{ __('articlemanager::messages.Are you sure to delete this record?') }}')) return true;
 
         return false;
     }

@@ -29,6 +29,7 @@ class ArticleManagerServiceProvider extends ServiceProvider
         require (__DIR__ . '/routes/web.php');
 
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'articlemanager');
 
         Route::bind('article_id', function($article_id){
             return Article::find($article_id);

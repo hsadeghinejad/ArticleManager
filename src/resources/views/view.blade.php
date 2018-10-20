@@ -9,11 +9,11 @@
         <div class="article-header">
             <h1 class="h2">{{$article->title}}</h1>
             <div class="text-muted mb-2">
-                ارسال شده توسط {{$article->user->name}}
+                {{ __('articlemanager::messages.Send by') }} {{$article->user->name}}
             </div>
             <small class="text-muted">
                 <i class="far fa-clock"></i>
-                ارسال شده در تاریخ {{Verta::instance($article->created_at)}}
+                {{ __('articlemanager::messages.Send at') }} {{Verta::instance($article->created_at)}}
                 ({{(new Verta($article->created_at))->formatDifference(verta())}})
             </small>
         </div>
@@ -38,25 +38,26 @@
 
     <div class="send-comment">
                 <div class="block block-search jumbotron mb-3">
-                    <h6>نظر شما: </h6>
+                    <h6>{{ __('articlemanager::messages.Comments') }}: </h6>
                     <hr>
                     @if(\Illuminate\Support\Facades\Auth::check())
+                        @include('articlemanager::errors')
                         <form method="POST" action="{{route('comment.store', ['article' => $article->slug])}}">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label for="body">متن :</label>
-                                <textarea class="form-control" name="body" placeholder="لطفا نظر خود را وارد نمایید ..."></textarea>
+                                <label for="body">{{ __('articlemanager::messages.Text') }} :</label>
+                                <textarea class="form-control" name="body" placeholder="{{ __('articlemanager::messages.Please enter your comment') }} ..."></textarea>
                             </div>
                             <div class="text-left">
-                                <button class="btn btn-info">ارسال</button>
+                                <button class="btn btn-info">{{ __('articlemanager::messages.Send') }}</button>
                             </div>
                         </form>
                     @else
                         <div class="text-center">
-                            <span class="lead text-muted">جهت ثبت نظر باید عضو وب سایت باشید!</span>
+                            <span class="lead text-muted">{{ __('articlemanager::messages.Sign in to send comment!') }}</span>
                             <div class="w-50 mx-auto d-flex mt-3">
-                                <a class="btn btn-primary btn-sm btn-block ml-3" href="{{ route('login') }}">ورود</a>
-                                <a class="btn btn-success btn-block btn-sm mt-0" href="{{ route('register') }}">ثبت نام</a>
+                                <a class="btn btn-primary btn-sm btn-block ml-3" href="{{ route('login') }}">{{ __('articlemanager::messages.Sign in') }}</a>
+                                <a class="btn btn-success btn-block btn-sm mt-0" href="{{ route('register') }}">{{ __('articlemanager::messages.Sign up') }}</a>
                             </div>
                         </div>
                     @endif
@@ -71,7 +72,7 @@
         <div class="comment mb-4">
             <div class="d-flex align-items-center mb-2">
                 <h6 class="mb-0">{{ $comment->user->name }}</h6>
-                <small class="text-muted mr-2">ارسال شده در تاریخ {{Verta::instance($comment->created_at)}}</small>
+                <small class="text-muted mr-2">{{ __('articlemanager::messages.Send at') }} {{Verta::instance($comment->created_at)}}</small>
             </div>
             <p>{{ $comment->body }}</p>
             <hr>
