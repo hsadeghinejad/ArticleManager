@@ -1,5 +1,4 @@
 # Article manager
-<img src="https://travis-ci.org/hsadeghinejad/ArticleManager.svg?branch=master">
 This package use [hsadeghinejad/AdminPanel](https://github.com/hsadeghinejad/AdminPanel) to create a article management and blog view for laravel projects
 
 # Installation
