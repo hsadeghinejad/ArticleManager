@@ -17,7 +17,8 @@
         "illuminate/support": "~5.0",
         "hamed-sadeghinejad/admin-panel": "~0.1",
         "cviebrock/eloquent-sluggable": "~4.6.0",
-        "hekmatinasser/verta": "1.9.*"
+        "hekmatinasser/verta": "1.9.*",
+        "ybazli/faker": "^1.0"
     },
     "extra": {
         "laravel": {

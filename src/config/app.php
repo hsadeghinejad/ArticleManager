@@ -1,4 +1,4 @@
 <?php
 return [
-    'paginate_rows' => 2
+    'paginate_rows' => 20
 ];

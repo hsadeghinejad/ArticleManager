@@ -4,6 +4,7 @@ namespace HamedSadeghi\ArticleManager;
 use HamedSadeghi\AdminPanel\AdminPanel;
 use HamedSadeghi\ArticleManager\Models\Article;
 use HamedSadeghi\ArticleManager\Models\Category;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Foundation\AliasLoader;
 use View;
 use Route;
@@ -19,17 +20,19 @@ class ArticleManagerServiceProvider extends ServiceProvider
 
         $this->app->register(\HamedSadeghi\AdminPanel\AdminPanelServiceProvider::class);
         AliasLoader::getInstance()->alias('AdminPanel', AdminPanel::class);
-
         AliasLoader::getInstance()->alias('ArticleManager', ArticleManagerFacade::class);
 
         $this->mergeConfigFrom(__DIR__ . '/config/app.php', 'articlemanager');
+
+        $this->registerEloquentFactoryLoader(__DIR__ . '/database/factories/');
     }
 
     public function boot(){
-        require (__DIR__ . '/routes/web.php');
+        require(__DIR__ . '/routes/web.php');
 
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
         $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'articlemanager');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'articlemanager');
 
         Route::bind('article_id', function($article_id){
             return Article::find($article_id);
@@ -42,8 +45,6 @@ class ArticleManagerServiceProvider extends ServiceProvider
             $menu->articles->add('افزودن مقاله', ['route' => 'admin.article.form']);
             $menu->articles->add('لیست مقالات', ['route' => 'admin.articles']);
         });
-
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'articlemanager');
 
         $this->publishes([
             __DIR__ . '/resources/assets' => public_path('articlemanager')
@@ -75,5 +76,9 @@ class ArticleManagerServiceProvider extends ServiceProvider
                 $view->with('articles', $articles);
             }
         });
+    }
+
+    public function registerEloquentFactoryLoader($path){
+        $this->app->make(Factory::class)->load($path);
     }
 }
