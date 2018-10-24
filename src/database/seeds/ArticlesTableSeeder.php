@@ -1,5 +1,5 @@
 <?php
-namespace HamedSadeghi\database\seeds;
+namespace HamedSadeghi\ArticleManager\database\seeds;
 
 use HamedSadeghi\ArticleManager\Models\Article;
 use HamedSadeghi\ArticleManager\Models\Category;

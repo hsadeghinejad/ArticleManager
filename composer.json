@@ -10,7 +10,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "HamedSadeghi\\ArticleManager\\" : "src/"
+            "HamedSadeghi\\ArticleManager\\" : "src/",
+            "HamedSadeghi\\ArticleManager\\Database\\Seeds": "src/database/seeds/"
         }
     },
     "require": {
