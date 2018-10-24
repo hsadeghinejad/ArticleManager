@@ -10,6 +10,8 @@ use View;
 use Route;
 use Illuminate\Support\ServiceProvider;
 use Blade;
+use Ybazli\Faker\Faker;
+use Ybazli\Faker\FakerServiceProvider;
 
 class ArticleManagerServiceProvider extends ServiceProvider
 {
@@ -19,8 +21,10 @@ class ArticleManagerServiceProvider extends ServiceProvider
         });
 
         $this->app->register(\HamedSadeghi\AdminPanel\AdminPanelServiceProvider::class);
+        $this->app->register(FakerServiceProvider::class);
         AliasLoader::getInstance()->alias('AdminPanel', AdminPanel::class);
         AliasLoader::getInstance()->alias('ArticleManager', ArticleManagerFacade::class);
+        AliasLoader::getInstance()->alias('Faker', Faker::class);
 
         $this->mergeConfigFrom(__DIR__ . '/config/app.php', 'articlemanager');
 
