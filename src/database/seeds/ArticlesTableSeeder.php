@@ -18,7 +18,7 @@ class ArticlesTableSeeder extends Seeder
         factory(Category::class, 5)->create();
 
         factory(Article::class, 50)->create()->each(function(Article $article){
-            for ($i=1 ; $i<=rand(1,5) ; $i++) {
+            for ($i=1 ; $i<=rand(1,5) ; $i++){
                 $category_id = rand(1,5);
                 if (!$article->categories()->find($category_id))
                     $article->categories()->attach($category_id);

@@ -6,7 +6,7 @@ use HamedSadeghi\ArticleManager\Models\User;
 
 $factory->define(Article::class, function (Faker $faker) {
     $title = \Faker::sentence(10);
-    $user = User::inRandomOrder()->get();
+    $user = User::inRandomOrder()->get()->first();
 
     return array(
         'user_id' => $user->id,

@@ -24,7 +24,7 @@ class ArticleManagerServiceProvider extends ServiceProvider
         $this->app->register(FakerServiceProvider::class);
         AliasLoader::getInstance()->alias('AdminPanel', AdminPanel::class);
         AliasLoader::getInstance()->alias('ArticleManager', ArticleManagerFacade::class);
-        AliasLoader::getInstance()->alias('Faker', Faker::class);
+        AliasLoader::getInstance()->alias('Faker', \Ybazli\Faker\Facades\Faker::class);
 
         $this->mergeConfigFrom(__DIR__ . '/config/app.php', 'articlemanager');
 
