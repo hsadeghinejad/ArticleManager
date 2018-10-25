@@ -43,3 +43,10 @@ $categories = ArticleManager::categories();
 And usnig `category.view` route to get link of articles of a category:
 ```php
 <a href="{{ route('category.view', ['category' => $category->slug]) }}">$category->title</a>
+```
+
+## Seeders
+If you want use fake data to preview package, add this line in `DatabaseSeeder`:
+```php
+\HamedSadeghi\ArticleManager\Database\Seeds\ArticlesTableSeeder::class
+```
